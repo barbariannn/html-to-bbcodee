@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to BBCode Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML to BBCode Converter</h1>
+        <textarea id="htmlInput" placeholder="Enter HTML here"></textarea>
+        <button onclick="convertToBBCode()">Convert</button>
+        <textarea id="bbcodeOutput" placeholder="BBCode will appear here" readonly></textarea>
+    </div>
+    <script>
+        function convertToBBCode() {
+            const htmlInput = document.getElementById('htmlInput').value;
+            const bbcodeOutput = htmlInput.replace(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/gi, '[url=$1]$2[/url]');
+            document.getElementById('bbcodeOutput').value = bbcodeOutput;
+        }
+    </script>
+</body>
+</html>
